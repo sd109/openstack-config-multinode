@@ -75,6 +75,7 @@ openstack_network_external:
   name: "{{ openstack_network_external_name }}"
   project: "admin"
   provider_network_type: "vlan"
+  # provider_physical_network: "cloud-net"
   provider_physical_network: "physnet1"
   provider_segmentation_id: 102
   shared: true
@@ -87,10 +88,11 @@ openstack_network_external:
 openstack_subnet_external:
   name: "{{ openstack_network_external_name }}"
   project: "admin"
-  cidr: "192.168.38.0/24"
-  no_gateway_ip: true
-  allocation_pool_start: "192.168.38.129"
-  allocation_pool_end: "192.168.38.254"
+  cidr: "192.168.68.0/24"
+  # no_gateway_ip: true
+  gateway_ip: "192.168.68.1"
+  allocation_pool_start: "192.168.68.129"
+  allocation_pool_end: "192.168.68.254"
 
 # openstack admin tenant network name.
 openstack_network_admin_tenant_name: "admin-tenant"
@@ -121,6 +123,7 @@ openstack_network_admin_vlan:
   name: "{{ openstack_network_admin_vlan_name }}"
   project: admin
   provider_network_type: "vlan"
+  # provider_physical_network: "cloud-net"
   provider_physical_network: "physnet1"
   shared: false
   # Subnet configuration.
@@ -144,6 +147,7 @@ openstack_network_admin_provider:
   name: "{{ openstack_network_admin_provider_name }}"
   project: admin
   provider_network_type: "vlan"
+  # provider_physical_network: "cloud-net"
   provider_physical_network: "physnet1"
   provider_segmentation_id: 100
   shared: false
